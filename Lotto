@@ -1,0 +1,48 @@
+package javaPractice;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Lotto {
+
+    public static void main(String[] args) { 
+        System.out.println("請輸入您的對獎號碼:");
+        Scanner s = new Scanner(System.in);
+        int[] userLotto = new int[6];
+        
+        for (int i = 0; i < userLotto.length; i++) {
+            System.out.print("請輸入第 " + (i + 1) + " 個號碼為: ");
+            userLotto[i] = s.nextInt();
+        }
+
+        int[] lotNums = new int[6];
+        for (int i = 0; i < lotNums.length; i++) {
+            lotNums[i] = (int) (Math.random() * 42) + 1;
+          
+            for (int j = 0; j < i; j++) {
+                if (lotNums[i] == lotNums[j]) {
+                    i--; //假如重複就重抽
+                    break;
+                }
+            }
+        }
+
+//        Arrays.sort(lotNums);
+//        Arrays.sort(userLotto);
+
+        System.out.println("樂透開獎號碼為: " + Arrays.toString(lotNums));
+       
+        System.out.println("您的對獎號碼為: " + Arrays.toString(userLotto));
+
+        int matches = 0;
+        for (int i = 0; i < lotNums.length; i++) {
+            for (int j = 0; j < userLotto.length; j++) {
+                if (lotNums[i] == userLotto[j]) {
+                    matches++;
+                }
+            }
+        }
+
+        System.out.printf("您中了 %d個號碼!",matches);
+        s.close();
+    }
+}
