@@ -1,0 +1,45 @@
+package javaPractice;
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class ScoreList {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // 提示使用者輸入分數數量n
+        System.out.print("請輸入分數的數量: ");
+        int n = scanner.nextInt();
+        
+        // 如果n小於2，無法計算第二高分，直接退出
+        if (n < 2) {
+            System.out.println("至少需要兩個分數來計算最高分和第二高分。");
+            return;
+        }
+        
+        // 用來儲存分數的陣列
+        int[] scores = new int[n];
+        
+        // 提示使用者輸入n個分數
+        System.out.println("請輸入 " + n + " 個分數 (0~100)：");
+        for (int i = 0; i < n; i++) {
+            scores[i] = scanner.nextInt();
+            
+            // 檢查分數是否在0到100範圍內
+            if (scores[i] < 0 || scores[i] > 100) {
+                System.out.println("分數必須在0到100之間，請重新輸入！");
+                i--; // 如果分數不合法，重複這次輸入
+            }
+        }
+        
+        // 排序陣列
+        Arrays.sort(scores);
+        
+        // 輸出最高分與第二高分
+        int highest = scores[n - 1]; // 最高分
+        int secondHighest = scores[n - 2]; // 第二高分
+        
+        System.out.println("最高分: " + highest);
+        System.out.println("第二高分: " + secondHighest);
+    }
+}
