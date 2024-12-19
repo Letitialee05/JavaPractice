@@ -1,0 +1,29 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class DisassembleCounter {
+
+	public static void main(String[] args) {
+		System.out.println("請輸入一個100到999的數");
+		Scanner s = new Scanner(System.in);
+		int counterNum = s.nextInt();
+		
+		if(counterNum<100 || counterNum>999) {
+			System.out.println("輸入錯誤,請重新輸入");
+		}
+		
+		int hundreds = counterNum / 100;
+		int tens = (counterNum /10) % 10;
+		int ones = counterNum % 10;
+		
+		int sum = hundreds + tens + ones;
+		int product = hundreds * tens * ones;
+		int difference = hundreds - tens - ones;
+		
+		System.out.println("三位數分解後的和為: "+sum);
+		System.out.println("三位數分解後的積為: "+product);
+		System.out.println("三位數分解後的差為: "+difference);
+		
+		s.close();	
+	}
+}
