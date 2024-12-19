@@ -1,0 +1,49 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class ScoreFirstSecond {
+	
+	public static void main(String[] args) {
+	  Scanner s = new Scanner(System.in);
+	  
+	  System.out.println("請輸入人數:");
+	  int number = s.nextInt();
+	  System.out.println("請輸入分數:");
+	  int score = s.nextInt();
+	  
+	  int count = 1;
+	  //剛開始輸入的分數同時是最大也會是第二大
+	  int first = score ;
+	  int second = score;
+	  
+	  //輸入並計算結果
+	  while(count < number)
+	  {
+	   System.out.println("請輸入分數:");
+	   score = s.nextInt();
+	   
+	   count = count + 1;
+	   
+	   if (score > first && count == 2 )
+	   {
+	    first = score;    
+	   }
+	   else if (score < first && count == 2 )
+	   {
+	    second = score;    
+	   }
+	   else if(score >= first && count > 2 )
+	   {
+	    first = score;
+	   }   
+	   else if(score >= second  && score <= first && count > 2)
+	   {
+	    second = score;
+	   } 
+	  }
+	  
+	  //輸出結果
+	  System.out.println("最高分:" + first);
+	  System.out.println("第二高分:" + second);  
+	 }
+}
