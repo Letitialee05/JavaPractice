@@ -1,0 +1,40 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class FibonacciNumbersRecursion {
+	//費氏數列第幾個
+	public static int fiIndex(int x) {
+		if(x==0||x==1) {
+			return x;
+		}else {
+			return fiIndex(x-1)+fiIndex(x-2);
+		}
+	}
+	
+	//費氏數列矩陣
+	public static int[] fi (int x) {
+		int fi[]= new int[x];
+		for(int i=0;i<fi.length;i++) {
+			int index = i+1;
+			fi[i] = fiIndex(index);
+		}
+		return fi;
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println("請輸入費氏數列第幾項");
+		Scanner s = new Scanner(System.in);
+		int num = s.nextInt();
+		System.out.printf("費氏數列第%d項為: %d%n",num,fiIndex(num));
+		System.out.printf("%d項費氏數列為: ",num);
+		int[] fibonacciSequence = fi(num);
+		
+		for(int i =0;i<num;i++) {
+			System.out.print(fibonacciSequence[i] + " ");
+		}
+		
+	
+	}
+
+}
