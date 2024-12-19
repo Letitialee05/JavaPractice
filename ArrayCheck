@@ -1,0 +1,52 @@
+package javaPractice;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class ArrayCheck{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        
+        // 不斷讓使用者輸入數字直到輸入0為止
+        while (true) {
+            System.out.print("請輸入一個整數(輸入0則跳出)：");
+            int num = scanner.nextInt();
+            
+            if (num == 0) {
+                break;
+            }
+            
+            numbers.add(num);  // 儲存有效的整數
+        }
+        
+        // 如果沒有輸入任何有效數字，輸出沒有結果
+        if (numbers.isEmpty()) {
+            System.out.println("沒有結果");
+        } else {
+            // 計算最大值、最小值與平均值
+            int maxNum = numbers.get(0);
+            int minNum = numbers.get(0);
+            int sum = 0;
+            
+            for (int number : numbers) {
+                if (number > maxNum) {
+                    maxNum = number;
+                }
+                if (number < minNum) {
+                    minNum = number;
+                }
+                sum += number;
+            }
+            
+            // 計算平均值
+            double avgNum = (double) sum / numbers.size();
+            
+            // 顯示結果
+            System.out.printf("最大值：%d\n", maxNum);
+            System.out.printf("最小值：%d\n", minNum);
+            System.out.printf("平均值：%.1f\n", avgNum);
+        }
+        
+        scanner.close();
+    }
+}
