@@ -1,0 +1,32 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class TemperatureCalculate {
+
+	public static void main(String[] args) {
+		System.out.println("請選擇華氏轉換攝氏輸入1,攝氏轉換華氏輸入2");
+		Scanner s = new Scanner(System.in);
+		int choice = s.nextInt();
+		
+		double change = 0.0,degree;
+		switch(choice) {
+		case 1 :
+			System.out.println("請輸入要轉換為攝氏的華氏溫度:");
+			degree = s.nextDouble();
+			change = (degree-32)*5/9;
+			System.out.printf("轉換為攝氏溫度:%.2f",change);
+			break;
+		case 2:
+			System.out.println("請輸入要轉換為華氏的攝氏溫度:");
+			degree = s.nextDouble();
+			change = degree/5*9+32;
+			System.out.printf("轉換為華氏溫度:%.2f",change);
+			break;
+		default:
+			System.out.println("輸入錯誤,請重新輸入");
+		
+		}
+
+	}
+
+}
