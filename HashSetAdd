@@ -1,0 +1,53 @@
+package javaPractice;
+
+import java.util.HashSet;
+
+public class HashSetAdd {
+    public static void main(String[] args) {
+        // 創建一個 HashSet 來儲存整數
+        HashSet<Integer> numbers = new HashSet<>();
+        
+        // 向 HashSet 中添加數字
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(20); // 重複的數字不會被添加
+        
+        // 計算 HashSet 中數字的總和
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        
+        // 輸出總和
+        System.out.println("Total sum: " + sum);  // 輸出 Total sum: 60
+    }
+}
+
+//Interator方法
+//import java.util.HashSet;
+//import java.util.Iterator;
+//
+//public class SetIteratorSumExample {
+//    public static void main(String[] args) {
+//        // 創建一個 HashSet，並加入一些數字
+//        HashSet<Integer> numbers = new HashSet<>();
+//        numbers.add(10);
+//        numbers.add(20);
+//        numbers.add(30);
+//        numbers.add(40);
+//        
+//        // 使用 Iterator 來遍歷 Set 並計算總和
+//        Iterator<Integer> iterator = numbers.iterator();
+//        int sum = 0;
+//        
+//        // 遍歷 Set 中的每一個元素並加總
+//        while (iterator.hasNext()) {
+//            sum += iterator.next();
+//        }
+//        
+//        // 輸出總和
+//        System.out.println("Total sum: " + sum);  // 輸出 Total sum: 100
+//    }
+//}
+//
