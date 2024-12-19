@@ -1,0 +1,43 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class CheckPrimeNumber {
+	public static boolean PrimeNum(int num) {
+		if (num <= 1) {
+	            return false;
+	        }
+	     
+        if (num == 2) {
+	            return true;
+	        }
+		
+		if(num%2==0) {
+			return false;
+		}
+		
+		for(int i=3;i*i<=num;i++){
+			if(num%i==0) {
+				return false;
+			}
+		
+		}
+		return true;
+	}
+	
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        try {
+            
+            System.out.println("請輸入檢查是否為質數的數:");
+            int checkNumber = s.nextInt();
+            
+            if (PrimeNum(checkNumber)) {
+                System.out.println(checkNumber + " 是質數");
+            } else {
+                System.out.println(checkNumber + " 不是質數");
+            }
+        } finally {
+            s.close();
+        }
+    }
+}
