@@ -1,0 +1,32 @@
+package javaPractice;
+
+import java.util.Scanner;
+
+public class PrimeNumberList {
+	
+	public static boolean primeList(int number) {
+
+//		 只需要檢查到平方根，因為如果一個數字 n 可以被大於其平方根的數字整除
+//		，則其對應的小於平方根的因數已經在之前檢查過	
+		for (int i = 2; i * i <= number; i+=2) {
+            if (number % i == 0) {
+                return false;  // 如果能被整除，則不是質數
+            }
+        }
+		return true;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("請輸入想確認質數的範圍:");
+		Scanner s = new Scanner(System.in);
+		int primeRange = s.nextInt();
+		System.out.printf("%d 範圍內的質數為: ",primeRange);
+		for(int i=2;i<primeRange;i++) {
+			if(primeList(i)) {
+				System.out.print(i+" ");
+			}
+		}
+
+	}
+
+}
