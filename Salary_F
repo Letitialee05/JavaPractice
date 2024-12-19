@@ -1,0 +1,65 @@
+package javaPractice;
+
+import java.util.Scanner;
+
+class Salary_F{
+	String name,department;
+	int number;
+	float basic_pay,plus,withhold,total,getpaid;
+
+	Salary_F(int num,String sn,String dep,float sbp){
+		number = num;
+		name = sn;
+		department = dep;
+		basic_pay = sbp;	
+		
+		withhold = sbp*0.1f;
+		getpaid = sbp-withhold;
+	}
+	
+	void show(){
+			
+		System.out.printf("員工代號:%d 、 員工姓名:%s、 服務部門:%s、 薪資總額:%.2f、 扣繳稅額:%.2f 、 應領薪資:%.2f\n",number,name,department,basic_pay,withhold,getpaid);
+	}
+	
+}
+
+
+public class SalaryClass {
+
+	public static void main(String[] args) {
+		int num;
+		String sn,dep;
+		float sbp,spl;
+		
+		Salary_F[] staff = new Salary_F[30];
+		
+		Scanner s=new Scanner(System.in);
+		System.out.println("請輸入幾位員工");
+	    int number_1 = s.nextInt();
+//		Wage_s[] staff = new Wage_s[number_1];
+//	    for(int i=0;i<staff.length;i++) {
+	    
+		for(int i=0;i<number_1;i++) {
+			System.out.println("請輸入員工代號");
+			num = s.nextInt();
+			System.out.println("請輸入員工姓名");
+			sn = s.next();
+			System.out.println("請輸入服務部門");
+			dep = s.next();
+			System.out.println("請輸入薪資");
+			sbp=s.nextFloat();
+			
+			staff [i]=new Salary_F(num,sn,dep,sbp);
+			
+		}
+//		for(int i=0;i<staff.length;i++) {
+		
+		for (int i=0;i<number_1;i++){	
+			
+			staff [i].show();		
+	    }
+  s.close();
+		
+}
+}
