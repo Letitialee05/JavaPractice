@@ -1,0 +1,39 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class BmiCalculate {
+
+	public static void main(String[] args) {
+		System.out.println("請輸入姓名:");
+		Scanner s = new Scanner(System.in);
+		String name = s.next();
+		System.out.println("請輸入年齡:");
+		int age = s.nextInt();
+		System.out.println("請輸入身高(公分):");
+		double height = s.nextDouble();
+		System.out.println("請輸入體重(公斤):");
+		double weight = s.nextDouble();
+		
+		double bmi = weight/Math.pow(height/100, 2);
+		
+		if (bmi<18.5) {
+			String mesg = "「體重過輕」，需要多運動，均衡飲食，以增加體能，維持健康！";
+			System.out.printf("%s年齡為%d,BMI為%.2f\n",name,age,bmi);
+			System.out.println(mesg);
+		}else if(bmi>=18.5 && bmi<24) {
+			String mesg = "恭喜！「健康體重」，要繼續保持！";
+			System.out.printf("%s年齡為%d,BMI為%.2f\n",name,age,bmi);
+			System.out.println(mesg);
+		}else if(bmi>=24 && bmi<27) {
+			String mesg = "「體重過重」了，要小心囉，趕快力行「健康體重管理」！";
+			System.out.printf("%s年齡為%d,BMI為%.2f\n",name,age,bmi);
+			System.out.println(mesg);
+		}else {
+			String mesg = "啊～「肥胖」，需要立刻力行「健康體重管理」囉！";
+			System.out.printf("%s年齡為%d,BMI為%.2f\n",name,age,bmi);
+			System.out.println(mesg);
+		}
+		s.close();
+	}
+
+}
