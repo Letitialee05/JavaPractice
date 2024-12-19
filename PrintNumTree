@@ -1,0 +1,38 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class PrintNumTree {
+    public static void main(String[] args) {
+        // 建立 Scanner 物件來讀取使用者的輸入
+        Scanner scanner = new Scanner(System.in);
+        
+        // 輸入金字塔的高度 n
+        System.out.print("請輸入 n 的值：");
+        int n = scanner.nextInt();
+        
+        // 生成金字塔
+        for (int i = 1; i <= n; i++) {
+            // 先印出空格，確保數字在對稱位置
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            
+            // 印出遞減的數字
+            for (int j = i; j >= 1; j--) {
+                System.out.print(j);
+            }
+            
+            // 印出遞增的數字（從 2 開始）
+            for (int j = 2; j <= i; j++) {
+                System.out.print(j);
+            }
+            
+            // 換行
+            System.out.println();
+        }
+        
+        // 關閉 Scanner 物件
+        scanner.close();
+    }
+}
+
