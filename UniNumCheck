@@ -1,0 +1,72 @@
+package javaPractice;
+import java.util.Scanner;
+
+public class UniNumCheck {
+
+	private static int calculateSum(int[] multi) {
+        int sum = 0;
+        for (int i = 0; i < multi.length; i++) {
+            sum += multi[i];
+        }
+        return sum;
+    }
+	
+    public static void main(String[] args) {
+        
+        int[] checkNum = new int[]{1, 2, 1, 2, 1, 2, 4, 1};
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("請輸入檢查的統一編號:");
+        String uni = s.next();
+        
+        int[] uniArray = new int[uni.length()];
+        
+        if (uni.length() != 8) {
+            System.out.println("輸入統一編號的長度不正確!");
+        } else {
+            System.out.print("您輸入的統一編號為: ");
+            
+            for (int i = 0; i < uni.length(); i++) {
+                uniArray[i] = uni.charAt(i) - '0';  // '0' 的ASCII 值是48,可用來轉換成數字
+                System.out.print(uniArray[i]);  
+        	}
+        }
+        System.out.println();
+        int []multi = new int[8];
+        
+        for (int i = 0; i < checkNum.length; i++) {
+            multi[i] = checkNum[i] * uniArray[i]; 
+            
+            if (multi[i] >= 10 && uniArray[6] == 7) {
+               
+                int sumWithZero = 0;
+                int sumWithOne = 0;
+                
+                multi[i] = 0;
+                sumWithZero = calculateSum(multi);
+             
+                multi[i] = 1;
+                sumWithOne = calculateSum(multi);
+             
+                if (sumWithZero % 5 == 0) {
+                    multi[i] = 0; 
+                } else if (sumWithOne % 5 == 0) {
+                    multi[i] = 1;
+                }
+            } else if (multi[i] >= 10 && uniArray[6] != 7) {
+                multi[i] = (multi[i] / 10) + (multi[i] % 10);
+            }
+        }
+
+        int sum = calculateSum(multi);
+
+        if (sum % 5 == 0) {
+            System.out.println("您輸入的統一編號邏輯符合");
+        } else {
+            System.out.println("您輸入的統一編號邏輯不符合");
+        }
+        
+        s.close();
+    }
+ 
+}
